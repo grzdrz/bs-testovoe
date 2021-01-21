@@ -9,6 +9,8 @@ import {
   Redirect,
 } from 'react-router-dom';
 
+import Page1 from './page1/index.jsx';
+import Page2 from './page2/index.jsx';
 import { reduceTemp } from '../redux/temp-reducer';
 import '../shared/styles/global.scss';
 
@@ -25,15 +27,30 @@ ReactDOM.render(
     <Router>
       <Switch>
         <Route
+          path='/Path1'
+          render={() => {
+            const text = 'Route_1';
+            return (
+              <>
+                <div>{text}</div>
+                <Page1 path="/" />
+              </>
+            );
+          }}
+        />
+        <Route
           exact
           path='/'
           render={() => {
-            const text = 'Router1';
-            return (<div>{text}</div>);
+            const text = 'Route_0';
+            return (
+              <>
+                <div>{text}</div>
+                <Page2 path="/Path1" />
+              </>
+            );
           }}
-        /* component={<div>Route1</div>} */
         />
-        <Route path='/Path2' component={<div>Route2</div>} />
       </Switch>
     </Router>
   </Provider>,
