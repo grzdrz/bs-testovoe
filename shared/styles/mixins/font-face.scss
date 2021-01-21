@@ -1,0 +1,12 @@
+@mixin font-face($name, $folderName, $type, $weight: normal, $style: normal, $path: false) {
+  $pathToFiles: $path or '../fonts/#{$folderName}';
+
+  @font-face {
+    font-family: $name;
+    src: url('#{$pathToFiles}/#{$folderName}-#{$type}.woff2') format('woff2'),
+      url('#{$pathToFiles}/#{$folderName}-#{$type}.woff') format('woff');
+    font-weight: $weight;
+    font-style: $style;
+    font-display: swap;
+  }
+}

@@ -1,0 +1,6 @@
+@import '../../styles/mixins/font-face.scss';
+
+@include font-face('Montserrat', 'montserrat', 'regular');
+@include font-face('Montserrat', 'montserrat', 'bold', bold);
+@include font-face('Montserrat', 'montserrat', 'italic', normal, italic);
+@include font-face('Montserrat', 'montserrat', 'bold-italic', bold, italic);

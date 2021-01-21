@@ -1,0 +1,24 @@
+$white: rgba(255, 255, 255, 1);
+$black: rgba(0, 0, 0, 1);
+$gray-blue: rgba(173, 181, 189, 1);
+$blue: rgba(139, 164, 249, 1);
+$purple: rgba(188, 156, 255, 1);
+$green: rgba(111, 207, 151, 1);
+$peach: rgba(255, 186, 156, 1);
+$gray: rgba(145, 145, 145, 1);
+$red: rgba(255, 0, 0, 1);
+$pink: rgba(255, 192, 203, 1);
+$dark-shade-5: rgba(31, 32, 65, 0.05);
+$dark-shade-10: rgba(31, 32, 65, 0.1);
+$dark-shade-25: rgba(31, 32, 65, 0.25);
+$dark-shade-30: rgba(31, 32, 65, 0.3);
+$dark-shade-50: rgba(31, 32, 65, 0.5);
+$dark-shade-75: rgba(31, 32, 65, 0.75);
+$dark-shade-100: rgba(31, 32, 65, 1);
+
+$purple-to-blue-25: linear-gradient(180deg, rgba(188, 156, 255, 0.25) 0%, rgba(139, 164, 249, 0.25) 100%);
+$purple-to-blue-50: linear-gradient(180deg, rgba(188, 156, 255, 0.5) 0%, rgba(139, 164, 249, 0.5) 100%);
+$purple-to-blue-100: linear-gradient(180deg, rgba(188, 156, 255, 1) 0%, rgba(139, 164, 249, 1) 100%);
+$green-to-turquoise: linear-gradient(180deg, rgba(111, 207, 151, 1) 0%, rgba(102, 210, 234, 1) 100%);
+$yellow-to-peach: linear-gradient(180deg, rgba(255, 227, 156, 1) 0%, rgba(255, 186, 156, 1) 100%);
+$gray-to-blue: linear-gradient(180deg, rgba(145, 145, 145, 1) 0%, rgba(61, 73, 117, 1) 100%);
