@@ -38,11 +38,6 @@ class RouteNodes {
       prevNode: this.current,
       nodes: [],
     };
-    /* const newNode = new RouteNodes();
-    newNode.route = this.formRoute(route);
-    newNode.title = title;
-    newNode.prevNode = this.current;
-    newNode.nodes = []; */
 
     this.current.nodes.push(newNode);
   }
@@ -72,7 +67,7 @@ class RouteNodes {
     return `${this.current.route}/${childRoute}`;
   }
 
-  findRoute(route) {
+  findRoute(route) { // рекурсивный поиск нода с искомым путём
     const current = this.head;
     const targetNode = findRouteNode(current, route);
     return targetNode;

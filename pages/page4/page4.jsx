@@ -1,5 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory, useLocation } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import RouteNodesForm from '../../shared/view/components/routeNodesForm/routeNodesForm.jsx';
 import {
@@ -12,12 +14,13 @@ import './page4.scss';
 
 const Page4 = (props) => {
   const { } = props;
+  const history = useHistory();
+  const location = useLocation();
 
   const routeNodes = useSelector((state) => state.routeNodes);
   const dispatch = useDispatch();
-  /* debugger; */
 
-  const handleClick = () => {
+  /* const handleClick = () => {
     dispatch(addNode({
       route: 'route',
       title: 'title',
@@ -36,14 +39,35 @@ const Page4 = (props) => {
   };
   const handleClick4 = () => {
     dispatch(moveBack());
-  };
+  }; */
 
-  const listOfNodes = routeNodes.routeNodes.current.nodes.map((node) => `${node.route}__${node.title}`);
+  const currentRouteNode = routeNodes.routeNodes.findRoute(location.pathname);
+  /* debugger; */
 
   return (
-    <>
-      <div className="list-of-nodes">{listOfNodes.toString()}</div>
-      <form
+    <div className="page">
+      <header className="page__header">
+        {currentRouteNode.prevNode
+          ? (
+            <Link to={currentRouteNode.prevNode.route}>
+              {currentRouteNode.prevNode.title}
+            </Link>
+          ) : null}
+        <p className="page__title">{currentRouteNode.title}</p>
+      </header>
+      <div className="page__list-of-nodes">{currentRouteNode.route}</div>
+      {currentRouteNode.nodes.map((node) => (
+        <Link to={node.route} key={node.route}>
+          {node.title}
+        </Link>
+      ))}
+    </div>
+  );
+};
+
+export default Page4;
+
+{/* <form
         className="move-forward-form"
         onSubmit={handleClick3}
       >
@@ -83,9 +107,4 @@ const Page4 = (props) => {
         >
           MOVE_BACK
         </button>
-      </div>
-    </>
-  );
-};
-
-export default Page4;
+      </div> */}

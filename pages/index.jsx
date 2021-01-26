@@ -25,7 +25,7 @@ const targetElement = document.querySelector('#app');
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <Route path='/'>
+      <Route path='/main'>
         <Page4 />
       </Route>
     </Router>

@@ -5,10 +5,7 @@ import {
   MOVE_BACK,
 } from './actions.types';
 import RouteNodes from '../../shared/helpers/RouteNodes';
-
-const initialState = {
-  routeNodes: new RouteNodes('/main', 'Main'),
-};
+import initialState from './initialState';
 
 const reduceRouteNodes = (state = initialState, action) => {
   const stateCopy = { ...state };
