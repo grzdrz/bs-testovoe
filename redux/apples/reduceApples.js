@@ -1,4 +1,4 @@
-import { DELETE_APPLES_COUNT, INCREASE_APPLES_COUNT } from "./actions.types";
+import { DELETE_APPLES_COUNT, INCREASE_APPLES_COUNT } from './actions.types';
 
 const initialState = {
   applesCount: 0,

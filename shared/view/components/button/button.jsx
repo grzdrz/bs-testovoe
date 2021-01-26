@@ -1,16 +1,13 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 
 import './button.scss';
 
 function Button(props) {
   const {
-    path,
     text,
-    onClick
+    onClick,
   } = props;
-
-  const url = `${path}`;
 
   return (
     <button
@@ -24,8 +21,3 @@ function Button(props) {
 }
 
 export default Button;
-/* <div>
-  <NavLink style={{ width: '100px', height: '50px', border: '1px solid red' }} to={url}>
-    TEST_A
-  </NavLink>
-</div> */

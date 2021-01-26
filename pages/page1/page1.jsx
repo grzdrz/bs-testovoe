@@ -4,10 +4,25 @@ import { increaseApplesCount, deleteApplesCount } from '../../redux/apples/actio
 
 import Button from '../../shared/view/components/button/button.jsx';
 
-const Page1 = (props) => {
-  const {
-    path,
-  } = props;
+/* class TESTComponent1 extends React.PureComponent {
+  constructor(props) {
+    super(props);
+
+  }
+
+  render() {
+    return (
+      <div>{props.text}</div>
+    );
+  }
+}; */
+
+const TESTComponent2 = () => {
+
+};
+
+const Page1 = (/* props */) => {
+  /* const { } = props; */
   const dispatch = useDispatch();
   const apples = useSelector((state) => state.apples);
 
@@ -20,8 +35,8 @@ const Page1 = (props) => {
 
   return (
     <>
-      <Button path={path} onClick={handleIncreaseApplesCount} text={`increase_${apples.applesCount}`} />
-      <Button path={path} onClick={handleDeleteApplesCount} text="delete" />
+      <Button onClick={handleIncreaseApplesCount} text={`increase_${apples.applesCount}`} />
+      <Button onClick={handleDeleteApplesCount} text="delete" />
     </>
   );
 };
