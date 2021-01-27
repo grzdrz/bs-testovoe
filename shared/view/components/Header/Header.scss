@@ -1,0 +1,20 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px 10%;
+  border: 2px solid blue;
+
+  &__title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  &__back-link {
+    margin-top: 10px;
+    text-decoration: none;
+    font-family: Montserrat, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+  }
+}

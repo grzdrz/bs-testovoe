@@ -1,0 +1,11 @@
+.route-tree-navigation-page {
+  display: flex;
+  flex-direction: column;
+  margin: 0 10%;
+
+  &__list-of-nodes {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid purple;
+  }
+}

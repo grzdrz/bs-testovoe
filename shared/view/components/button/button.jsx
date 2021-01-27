@@ -1,19 +1,18 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 
-import './button.scss';
+import './Button.scss';
 
 function Button(props) {
   const {
     text,
     onClick,
+    ...restProps
   } = props;
 
   return (
     <button
       className="button"
-      onClick={onClick}
-      type="button"
+      {...restProps}
     >
       {text}
     </button>

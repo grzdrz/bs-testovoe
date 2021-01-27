@@ -1,0 +1,27 @@
+@import '../../../styles/theme.scss';
+
+.route-adding-form {
+  max-width: 350px;
+  min-width: 300px;
+  border: 1px solid $dark-shade-75;
+  border-radius: 5px;
+  padding: 20px 10px;
+  box-shadow: 0px 4px 12px 1px $dark-shade-50;
+
+  &__title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  &__title-input {
+    margin-bottom: 10px;
+  }
+
+  &__route-input {
+    margin-bottom: 10px;
+  }
+
+  &__submitter {
+  }
+}
