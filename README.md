@@ -1,5 +1,5 @@
 # Каталог продуктового магазина на реакте
-<a href="https://grzdrz.github.io/ProductSupermarket/"><p>Github Pages</p></a>
+<a href="https://grzdrz.github.io/bs-testovoe/"><p>Github Pages</p></a>
 
 # Используемые библиотеки
 
@@ -9,7 +9,7 @@
 
 # Загрузка
 ```
-$ git clone https://github.com/grzdrz/ProductSupermarket.git
+$ git clone https://github.com/grzdrz/bs-testovoe.git
 ```
 
 # Установка
@@ -26,11 +26,4 @@ $ npm run prod
 # Запуск
 ```
 $ npm run server
-```
-
-# Тестирование
-```
-$ npm run test
-$ npm run test_debug
-$ npm run coverage
 ```
