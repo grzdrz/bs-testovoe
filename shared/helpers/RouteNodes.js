@@ -10,6 +10,21 @@ const findRouteNode = (current, route) => {
   return targetNode;
 };
 
+const next = (tree, current, callback) => {
+  if (tree.head === current) {
+    callback(current);
+  }
+  if (!current.nodes.length) {
+    /* callback(current); */
+    return current;
+  }
+
+  current.nodes.forEach((node) => {
+    callback(node);
+    next(tree, node, callback);
+  });
+};
+
 class RouteNode {
   constructor(
     routeSegment,
@@ -95,12 +110,20 @@ routeNodes.add(current, { routeSegment: 'r12', title: 'r12', });
 const testPath = routeNodes.head.route;
 const testPath2 = current.route;
 
-debugger;
+/* debugger;
 const route = routeNodes.findRoute('/main/r1/r12');
-debugger;
+debugger; */
 
 /* debugger;
 routeNodes.remove(routeNodes.current);
 debugger; */
+
+/* debugger; */
+const arrayOfNodes = [];
+next(routeNodes, routeNodes.head, (currentNode) => {
+  /* console.log(currentNode.title); */
+  arrayOfNodes.push(currentNode);
+});
+debugger;
 
 export default RouteNodesTree;
