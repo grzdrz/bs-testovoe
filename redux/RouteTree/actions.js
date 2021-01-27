@@ -4,9 +4,10 @@ import {
   REMOVE_NODE,
 } from './actions.types';
 
-export const addNode = ({ routeSegment, title }) => ({
+export const addNode = ({ currentNode, routeSegment, title }) => ({
   type: ADD_NODE,
   payload: {
+    currentNode,
     routeSegment,
     title,
   },

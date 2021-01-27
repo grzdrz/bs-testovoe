@@ -9,9 +9,9 @@ class RoutesNodesTree {
     this.head = new RouteNode(routeSegment, title, null);
   }
 
-  add(currentNode, { routeSegment, title }) {
-    const test = currentNode.nodes.map((node) => node.route).includes(currentNode.route);
-    if (test) return; // TEMP не реагирует на повторяющиеся ноуты, уточнить поведение
+  add({ currentNode, routeSegment, title }) {
+    const hasSameRoute = currentNode.nodes.map((node) => node.routeSegment).includes(routeSegment);
+    if (hasSameRoute) return; // TEMP не реагирует на повторяющиеся роуты, уточнить поведение
 
     const newNode = new RouteNode(routeSegment, title, currentNode);
 
@@ -77,12 +77,12 @@ class RoutesNodesTree {
 
 /* const tree = new RoutesNodesTree('main', 'Main');
 let current = tree.head;
-tree.add(current, { routeSegment: 'r1', title: 'r1', });
-tree.add(current, { routeSegment: 'r2', title: 'r2', });
+tree.add({ currentNode, routeSegment: 'r1', title: 'r1', });
+tree.add({ currentNode, routeSegment: 'r2', title: 'r2', });
 
 current = tree.head.nodes[0];
-tree.add(current, { routeSegment: 'r11', title: 'r11', });
-tree.add(current, { routeSegment: 'r12', title: 'r12', });
+tree.add({ currentNode, routeSegment: 'r11', title: 'r11', });
+tree.add({ currentNode, routeSegment: 'r12', title: 'r12', });
 
 const testPath = tree.head.route;
 const testPath2 = current.route; */

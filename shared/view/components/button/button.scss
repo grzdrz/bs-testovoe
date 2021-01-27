@@ -36,10 +36,16 @@
 
   &__text {
     margin: 0 50px;
+    font-family: Montserrat, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: $dark-shade-75;
   }
 
   &__arrow {
     font-family: 'Material Icons';
+    font-size: 20px;
+    color: $dark-shade-75;
     position: absolute;
     right: 15px;
 

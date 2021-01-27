@@ -1,8 +1,15 @@
 .children-nodes-links {
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 10px 0;
+
+  &__title {
+    margin-bottom: 10px;
+  }
+
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 0;
+  }
 
   &__link {
     height: 40px;

@@ -9,8 +9,8 @@ const reduceRouteTree = (state = initialState, action) => {
 
   switch (action.type) {
     case ADD_NODE: {
-      const { routeSegment, title } = action.payload;
-      stateCopy.routeTree.add(routeSegment, title);
+      const { currentNode, routeSegment, title } = action.payload;
+      stateCopy.routeTree.add({ currentNode, routeSegment, title });
       return stateCopy;
     }
     case REMOVE_NODE: {

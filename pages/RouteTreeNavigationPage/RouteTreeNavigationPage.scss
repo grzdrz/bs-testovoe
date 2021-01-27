@@ -2,11 +2,28 @@
   display: flex;
   flex-direction: column;
   margin: 0 10%;
+  padding: 30px 0;
 
   &__list-of-nodes {
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid purple;
+  }
+
+  &__central-content {
+    display: flex;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  &__children-routs-table {
+    width: 60%;
+  }
+
+  &__route-adding-form {
+    width: 40%;
+    display: flex;
+    justify-content: center;
   }
 
   &__children-nodes-links {

@@ -1,0 +1,38 @@
+@import '../../../styles/theme.scss';
+
+.children-routs-table {
+  width: 100%;
+  box-shadow: 0px 6px 8px 0px $dark-shade-50;
+
+  &__row {
+    width: 100%;
+    display: flex;
+    border: 1px solid red;
+    margin-bottom: 10px;
+  }
+
+  &__cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: 1px solid blue;
+    &:nth-of-type(1) {
+      width: 40%;
+    }
+    &:nth-of-type(2) {
+      width: 25%;
+    }
+    &:nth-of-type(3) {
+      width: 20%;
+    }
+    &:nth-of-type(4) {
+      width: 15%;
+    }
+
+    &_position_head {
+      font-weight: bold;
+      color: $dark-shade-75;
+    }
+  }
+}

@@ -12,18 +12,21 @@ const ChildrenNodesLinks = () => {
 
   return (
     <div className="children-nodes-links">
-      {currentRouteNode.nodes.map((node) => (
-        <div className="children-nodes-links__link" key={node.route}>
-          <Button
-            to={node.route}
-            text={`to ${node.title}`}
-            hasArrow
-            arrowDirection="down"
-          >
-            {node.title}
-          </Button>
-        </div>
-      ))}
+      <p className="children-nodes-links__title">Children nodes</p>
+      <div className="children-nodes-links__links">
+        {currentRouteNode.nodes.map((node) => (
+          <div className="children-nodes-links__link" key={node.route}>
+            <Button
+              to={node.route}
+              text={`to ${node.title}`}
+              hasArrow
+              arrowDirection="down"
+            >
+              {node.title}
+            </Button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
