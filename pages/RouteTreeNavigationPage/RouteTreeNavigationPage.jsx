@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
-import { Link } from 'react-router-dom';
 
 import RouteAddingForm from '../../shared/view/components/RouteAddingForm/RouteAddingForm.jsx';
+import ChildrenNodesLinks from '../../shared/view/components/ChildrenNodesLinks/ChildrenNodesLinks.jsx';
 /* import RouteNodesForm from '../../shared/view/components/routeNodesForm/routeNodesForm.jsx';
 import {
   addNode,
@@ -27,11 +27,9 @@ const RouteTreeNavigationPage = () => {
       <div className="route-tree-navigation-page__route-adding-form">
         <RouteAddingForm />
       </div>
-      {currentRouteNode.nodes.map((node) => (
-        <Link to={node.route} key={node.route}>
-          {node.title}
-        </Link>
-      ))}
+      <div className="route-tree-navigation-page__children-nodes-links">
+        <ChildrenNodesLinks />
+      </div>
     </div>
   );
 };

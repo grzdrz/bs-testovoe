@@ -1,12 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
-import { Link } from 'react-router-dom';
 
+import Button from '../Button/Button.jsx';
 import './Header.scss';
 
-const Header = (props) => {
-  const { } = props;
+const Header = () => {
   const location = useLocation();
   const { routeTree } = useSelector((state) => state.routeTree);
   const currentRouteNode = routeTree.find(location.pathname);
@@ -18,9 +17,16 @@ const Header = (props) => {
       <p className="header__title">{titleText}</p>
       {currentRouteNode && currentRouteNode.prevNode
         ? (
-          <Link className="header__back-link" to={currentRouteNode.prevNode.route}>
-            {`Parent node: ${currentRouteNode.prevNode.title}`}
-          </Link>
+          <div className="header__back-link">
+            <Button
+              to={currentRouteNode.prevNode.route}
+              text={`to ${currentRouteNode.prevNode.title}`}
+              hasArrow
+              arrowDirection="up"
+            >
+              {`Parent node: ${currentRouteNode.prevNode.title}`}
+            </Button>
+          </div>
         ) : null}
     </header>
   );

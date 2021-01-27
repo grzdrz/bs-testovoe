@@ -4,19 +4,13 @@ import Input from '../Input/Input.jsx';
 import Button from '../Button/Button.jsx';
 import './RouteAddingForm.scss';
 
-const RouteAddingForm = (props) => {
-  const { } = props;
-
+const RouteAddingForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const test = event.form;
+    const form = event.currentTarget;
     debugger;
   };
-
-  /* const event: React.FormEvent<HTMLFormElement>;
-  event. */
-
   return (
     <form className="route-adding-form" onSubmit={handleSubmit}>
       <p className="route-adding-form__title">Добавление узлов</p>
@@ -37,6 +31,7 @@ const RouteAddingForm = (props) => {
       <div className="route-adding-form__submitter">
         <Button
           text="добавить роут"
+          hasArrow
           type="submit"
         />
       </div>
