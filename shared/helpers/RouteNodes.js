@@ -1,5 +1,4 @@
-/* 'use strict' */
-const mock = 0;
+/* eslint-disable max-classes-per-file */
 
 const findRouteNode = (current, route) => {
   if (current.route === route) return current;
@@ -11,60 +10,64 @@ const findRouteNode = (current, route) => {
   return targetNode;
 };
 
-class RouteNodes {
+class RouteNode {
+  constructor(
+    routeSegment,
+    title,
+    prevNode,
+    nodes,
+  ) {
+    this.routeSegment = routeSegment;
+    this.title = title;
+
+    this.prevNode = prevNode;
+    this.nodes = nodes;
+  }
+
+  get route() {
+    if (this.prevNode) return `${this.prevNode.route}/${this.routeSegment}`;
+    return `/${this.routeSegment}`;
+  }
+}
+
+class RouteNodesTree {
   constructor(route, title) {
     this.initialize(route, title);
   }
 
-  initialize(route, title) {
-    this.head = {
-      route: `/${route}`,
-      title,
-      prevNode: undefined,
-      nodes: [],
-    };
+  initialize(routeSegment, title) {
+    this.head = new RouteNode(routeSegment, title, undefined, []);
 
     this.current = this.head;
   }
 
-  add(route, title) {
-    const fullRoute = this.formRoute(route);
-    const test = this.current.nodes.map((node) => node.route).includes(fullRoute);
+  add(currentNode, { routeSegment, title }) {
+    /* const fullRoute = this.formRoute(route); */
+    const test = currentNode.nodes.map((node) => node.route).includes(currentNode.route/* fullRoute */);
     if (test) return; // TEMP не реагирует на повторяющиеся ноуты, уточнить поведение
 
-    const newNode = {
-      route: this.formRoute(route),
-      title,
-      prevNode: this.current,
-      nodes: [],
-    };
+    const newNode = new RouteNode(routeSegment, title, currentNode, []);
 
-    this.current.nodes.push(newNode);
+    currentNode.nodes.push(newNode);
   }
 
-  remove() {
-    if (this.current === this.head) return; // TEMP уточнить поведение
+  remove(removedNode) {
+    if (removedNode === this.head) return; // TEMP уточнить поведение
 
-    const removedNode = this.current;
-    this.current = this.current.prevNode;
-    this.current.nodes.filter((node) => node !== removedNode);
-  }
+    // переводим ссылки дочерних нодов удаляемого нода на предыдущий нод относительно удаляемого
+    removedNode.nodes.forEach((childNode) => {
+      childNode.prevNode = removedNode.prevNode;
+    });
 
-  moveForward(targetRoute) {
-    debugger;
-    const target = this.current.nodes.find((node) => node.route === targetRoute);
-    if (target) this.current = target;
-  }
+    // удаляем из списка дочерних нодов родительского нода удаляемый нод
+    // и тут же пришиваем к дочерним нодам родителя дочерние ноды удаляемого нода
+    const parentNode = removedNode.prevNode;
+    const changedParentNodes = parentNode.nodes
+      .filter((childNode) => childNode !== removedNode)
+      .concat(removedNode.nodes);
+    parentNode.nodes = changedParentNodes;
 
-  moveBack() {
-    if (this.current === this.head) return; // TEMP уточнить поведение
-
-    debugger;
-    this.current = this.current.prevNode;
-  }
-
-  formRoute(childRoute) {
-    return `${this.current.route}/${childRoute}`;
+    removedNode = null; //
   }
 
   findRoute(route) { // рекурсивный поиск нода с искомым путём
@@ -80,16 +83,24 @@ class RouteNodes {
 
 // TEST
 
-/* const routeNodes = new RouteNodes('main', 'Main');
-routeNodes.add('r1', 'r1');
-routeNodes.add('r2', 'r2');
+const routeNodes = new RouteNodesTree('main', 'Main');
+let current = routeNodes.head;
+routeNodes.add(current, { routeSegment: 'r1', title: 'r1', });
+routeNodes.add(current, { routeSegment: 'r2', title: 'r2', });
 
-routeNodes.current = routeNodes.head.nodes[0];
-routeNodes.add('r11', 'r11');
-routeNodes.add('r12', 'r12');
+current = routeNodes.head.nodes[0];
+routeNodes.add(current, { routeSegment: 'r11', title: 'r11', });
+routeNodes.add(current, { routeSegment: 'r12', title: 'r12', });
+
+const testPath = routeNodes.head.route;
+const testPath2 = current.route;
 
 debugger;
-const route = routeNodes.findRoute('/main/r2');
+const route = routeNodes.findRoute('/main/r1/r12');
+debugger;
+
+/* debugger;
+routeNodes.remove(routeNodes.current);
 debugger; */
 
-export default RouteNodes;
+export default RouteNodesTree;
