@@ -1,5 +1,3 @@
-/* eslint-disable consistent-return */
-/* eslint-disable max-classes-per-file */
 import RouteNode from './RouteNode';
 
 class RoutesNodesTree {
@@ -8,14 +6,14 @@ class RoutesNodesTree {
   }
 
   initialize(routeSegment, title) {
-    this.head = new RouteNode(routeSegment, title, undefined, []);
+    this.head = new RouteNode(routeSegment, title, null);
   }
 
   add(currentNode, { routeSegment, title }) {
     const test = currentNode.nodes.map((node) => node.route).includes(currentNode.route);
     if (test) return; // TEMP не реагирует на повторяющиеся ноуты, уточнить поведение
 
-    const newNode = new RouteNode(routeSegment, title, currentNode, []);
+    const newNode = new RouteNode(routeSegment, title, currentNode);
 
     currentNode.nodes.push(newNode);
   }
@@ -59,6 +57,7 @@ class RoutesNodesTree {
     return targetNode;
   }
 
+  // eslint-disable-next-line consistent-return
   _next(current, callback) {
     if (this.head === current) {
       callback(current);

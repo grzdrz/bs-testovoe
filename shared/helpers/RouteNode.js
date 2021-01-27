@@ -3,13 +3,12 @@ class RouteNode {
     routeSegment,
     title,
     prevNode,
-    nodes,
   ) {
     this.routeSegment = routeSegment;
     this.title = title;
 
     this.prevNode = prevNode;
-    this.nodes = nodes;
+    this.nodes = [];
   }
 
   get route() {

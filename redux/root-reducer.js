@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
 import reduceApples from './apples/reduceApples';
-import reduceRouteNodes from './routeNodes/reduceRouteNodes';
+import reduceRouteTree from './RouteTree/reduceRouteTree';
 
 const rootReducer = combineReducers({
   apples: reduceApples,
-  routeNodes: reduceRouteNodes,
+  routeTree: reduceRouteTree,
 });
 
 export default rootReducer;
