@@ -1,13 +1,25 @@
 @import '../../../styles/theme.scss';
 
+@mixin cellPalette($color1) {
+  border: 2px solid $color1;
+}
+
 .children-routs-table {
   width: 100%;
-  box-shadow: 0px 6px 8px 0px $dark-shade-50;
+  box-shadow: 0px 5px 11px 0px $dark-shade-50;
+  padding: 20px 10px;
+  border-radius: 5px;
+
+  &__title {
+    font-size: 20px;
+    font-weight: bold;
+    color: $dark-shade-75;
+    margin-bottom: 15px;
+  }
 
   &__row {
     width: 100%;
     display: flex;
-    border: 1px solid red;
     margin-bottom: 10px;
   }
 
@@ -16,7 +28,8 @@
     align-items: center;
     justify-content: center;
     padding: 10px;
-    border: 1px solid blue;
+    margin-right: 5px;
+
     &:nth-of-type(1) {
       width: 40%;
     }
@@ -28,11 +41,22 @@
     }
     &:nth-of-type(4) {
       width: 15%;
+      margin-right: 0;
     }
 
     &_position_head {
       font-weight: bold;
       color: $dark-shade-75;
+    }
+
+    @include cellPalette($vk2);
+    &_palette {
+      &_whatsapp {
+        @include cellPalette($whatsapp2);
+      }
+      &_gitlab {
+        @include cellPalette($gitlab2);
+      }
     }
   }
 }

@@ -1,11 +1,27 @@
 @import '../../../styles/theme.scss';
 
+@mixin basisPalette($color1, $color2) {
+  background: $color1;
+  border: 2px solid $color2;
+
+  &:hover,
+  &:active,
+  &:focus {
+    box-shadow: 2px 6px 12px 1px $color2;
+  }
+}
+@mixin textPalette($color1) {
+  text-shadow: 1px 2px 2px $color1;
+}
+@mixin arrowPalette($color1) {
+  text-shadow: 0px 0px 5px $color1;
+}
+
 .button {
   cursor: pointer;
   width: 100%;
   height: 100%;
   position: relative;
-  border: 1px solid rgb(98, 44, 199);
   border-radius: 5px;
   font-family: Montserrat, Arial, sans-serif;
   font-size: 20px;
@@ -23,14 +39,15 @@
     text-decoration: none;
     border-radius: inherit;
     outline: none;
-    background: transparent;
 
-    &:hover {
-      box-shadow: 2px 6px 12px 1px rgb(110, 40, 150);
-    }
-    &:active,
-    &:focus {
-      box-shadow: 2px 6px 12px 1px rgb(23, 12, 179);
+    @include basisPalette($vk1, $vk3);
+    &_palette {
+      &_whatsapp {
+        @include basisPalette($whatsapp1, $whatsapp3);
+      }
+      &_gitlab {
+        @include basisPalette($gitlab1, $gitlab3);
+      }
     }
   }
 
@@ -39,13 +56,23 @@
     font-family: Montserrat, Arial, sans-serif;
     font-size: 16px;
     font-weight: bold;
-    color: $dark-shade-75;
+    color: $white;
+
+    @include textPalette($vk3);
+    &_palette {
+      &_whatsapp {
+        @include textPalette($whatsapp3);
+      }
+      &_gitlab {
+        @include textPalette($gitlab3);
+      }
+    }
   }
 
   &__arrow {
     font-family: 'Material Icons';
     font-size: 20px;
-    color: $dark-shade-75;
+    color: $white;
     position: absolute;
     right: 15px;
 
@@ -54,6 +81,16 @@
     }
     &_direction_down {
       transform: rotate(90deg);
+    }
+
+    @include arrowPalette($vk3);
+    &_palette {
+      &_whatsapp {
+        @include arrowPalette($whatsapp3);
+      }
+      &_gitlab {
+        @include arrowPalette($gitlab3);
+      }
     }
   }
 }

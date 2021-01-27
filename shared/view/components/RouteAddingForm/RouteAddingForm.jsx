@@ -1,14 +1,17 @@
 import React, { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router';
 
 import { addNode } from '../../../../redux/RouteTree/actions';
 import Input from '../Input/Input.jsx';
 import Button from '../Button/Button.jsx';
 import './RouteAddingForm.scss';
 
-const RouteAddingForm = (props) => {
-  const { currentNode } = props;
+const RouteAddingForm = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const { routeTree } = useSelector((state) => state.routeTree);
+  const currentNode = routeTree.find(location.pathname);
 
   const handleSubmit = useCallback((event) => {
     event.preventDefault();
@@ -18,7 +21,7 @@ const RouteAddingForm = (props) => {
     const title = formData.get('route-title');
     const routeSegment = formData.get('route');
     dispatch(addNode({ currentNode, routeSegment, title }));
-  }, []);
+  }, [currentNode]);
 
   return (
     <form className="route-adding-form" onSubmit={handleSubmit}>
