@@ -10,9 +10,7 @@ import {
 } from 'react-router-dom';
 
 import Header from '../shared/view/components/Header/Header.jsx';
-/* import Page1 from './page1/page1.jsx';
-import Page2 from './page2/page2.jsx';
-import Page3 from './page3/page3.jsx'; */
+/* import Page2 from './page2/page2.jsx'; */
 import RouteTreeNavigationPage from './RouteTreeNavigationPage/RouteTreeNavigationPage.jsx';
 import rootReducer from '../redux/root-reducer';
 import '../shared/styles/global.scss';
