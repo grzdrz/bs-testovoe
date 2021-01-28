@@ -24,7 +24,8 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-router-relative-links": "^0.1.0",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "redux-persist": "^6.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.11.1",

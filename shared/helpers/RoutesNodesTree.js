@@ -47,6 +47,38 @@ class RoutesNodesTree {
     this._next(this.head, callback);
   }
 
+  static serialize(tree) {
+    const arrayOfNodes = [];
+    tree.iterate((node) => {
+      arrayOfNodes.push({
+        lvl: node.route.split('\/').length,
+        title: node.title,
+        routeSegment: node.routeSegment,
+        prevRoute: node.prevNode ? node.prevNode.route : null,
+        nodesRoutes: node.nodes.map((childNode) => childNode.route),
+      });
+    });
+
+    return JSON.stringify(arrayOfNodes);
+  }
+
+  static deserialize(treeString) {
+    const arrayOfNodes = JSON.parse(treeString);
+    const sortedArray = arrayOfNodes.sort((a, b) => a.lvl - b.lvl);
+
+    const newTree = new RoutesNodesTree(sortedArray[0].routeSegment, sortedArray[0].title);
+    for (let i = 1; i < sortedArray.length; i += 1) {
+      const parentNode = newTree.find(sortedArray[i].prevRoute);
+      newTree.add({
+        currentNode: parentNode,
+        routeSegment: sortedArray[i].routeSegment,
+        title: sortedArray[i].title,
+      });
+    }
+
+    return newTree;
+  }
+
   _findNode(current, route) {
     if (current.route === route) return current;
 

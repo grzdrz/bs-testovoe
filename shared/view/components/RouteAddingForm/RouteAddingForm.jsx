@@ -30,7 +30,7 @@ const RouteAddingForm = () => {
         <p className="route-adding-form__input-label">Route</p>
         <Input
           type="text"
-          name="route-title"
+          name="route"
           placeholder="route"
         />
       </div>
@@ -38,7 +38,7 @@ const RouteAddingForm = () => {
         <p className="route-adding-form__input-label">Title</p>
         <Input
           type="text"
-          name="route"
+          name="route-title"
           placeholder="title"
         />
       </div>
