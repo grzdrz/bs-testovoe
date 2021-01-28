@@ -39,6 +39,7 @@
     text-decoration: none;
     border-radius: inherit;
     outline: none;
+    white-space: nowrap;
 
     @include basisPalette($vk1, $vk3);
     &_palette {

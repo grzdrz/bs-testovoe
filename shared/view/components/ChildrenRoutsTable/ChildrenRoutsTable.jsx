@@ -22,16 +22,44 @@ const ChildrenRoutsTable = () => {
     <div className={b()}>
       <p className={b('title')}>Children routs info</p>
       <div className={b('row')}>
-        <div className={headCellClasses}>route</div>
-        <div className={headCellClasses}>title</div>
-        <div className={headCellClasses}>amount nodes</div>
-        <div className={headCellClasses}>delete</div>
+        <div className={headCellClasses}>
+          <span className={b('cell-text')}>
+            route
+          </span>
+        </div>
+        <div className={headCellClasses}>
+          <span className={b('cell-text')}>
+            title
+          </span>
+        </div>
+        <div className={headCellClasses}>
+          <span className={b('cell-text')}>
+            amount nodes
+          </span>
+        </div>
+        <div className={headCellClasses}>
+          <span className={b('cell-text')}>
+            delete
+          </span>
+        </div>
       </div>
       {currentNode.nodes.map((node) => (
         <div className={b('row')} key={node.route}>
-          <div className={cellClasses}>{node.route}</div>
-          <div className={cellClasses}>{node.title}</div>
-          <div className={cellClasses}>{node.nodes.reduce((sum) => sum + 1, 0)}</div>
+          <div className={cellClasses}>
+            <span className={b('cell-text')}>
+              {node.route}
+            </span>
+          </div>
+          <div className={cellClasses}>
+            <span className={b('cell-text')}>
+              {node.title}
+            </span>
+          </div>
+          <div className={cellClasses}>
+            <span className={b('cell-text')}>
+              {node.nodes.reduce((sum) => sum + 1, 0)}
+            </span>
+          </div>
           <div className={cellClasses}>
             <DeleteButton node={node} />
           </div>

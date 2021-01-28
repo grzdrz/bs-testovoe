@@ -32,6 +32,7 @@ const RouteAddingForm = () => {
           type="text"
           name="route"
           placeholder="route"
+          required
         />
       </div>
       <div className="route-adding-form__title-input">
@@ -40,6 +41,7 @@ const RouteAddingForm = () => {
           type="text"
           name="route-title"
           placeholder="title"
+          required
         />
       </div>
       <div className="route-adding-form__submitter">

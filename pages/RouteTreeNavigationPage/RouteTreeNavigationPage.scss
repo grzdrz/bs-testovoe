@@ -1,27 +1,58 @@
+@import '../../shared/styles/theme.scss';
+@import '../../shared/styles/breakpoints.scss';
+
+@mixin borderPalette($color1) {
+  border: 5px solid $color1;
+}
+
 .route-tree-navigation-page {
   display: flex;
   flex-direction: column;
   padding: 30px 5%;
-  background: white;
+  background: $white;
 
   &__list-of-nodes {
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid purple;
+    color: $dark-shade-75;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: auto;
+
+    @include borderPalette($vk1);
+    &_palette {
+      &_whatsapp {
+        @include borderPalette($whatsapp2);
+      }
+      &_gitlab {
+        @include borderPalette($gitlab1);
+      }
+    }
   }
 
   &__central-content {
     display: flex;
+    justify-content: space-around;
     width: 100%;
     margin-bottom: 30px;
+
+    @media screen and (max-width: $laptop-m) {
+      flex-direction: column;
+    }
   }
 
   &__children-routs-table {
-    width: 60%;
+    width: 70%;
+    @media screen and (max-width: $laptop-m) {
+      margin-bottom: 30px;
+      width: 100%;
+    }
+    @media screen and (max-width: $tablet) {
+      overflow: auto;
+    }
   }
 
   &__route-adding-form {
-    width: 40%;
     display: flex;
     justify-content: center;
   }
