@@ -1,17 +1,15 @@
 import React, { useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router';
+import { useDispatch } from 'react-redux';
 
 import { addNode } from '../../../../redux/RouteTree/actions';
+import useCurrentNode from '../../../helpers/hooks/useCurrentNode';
 import Input from '../Input/Input.jsx';
 import Button from '../Button/Button.jsx';
 import './RouteAddingForm.scss';
 
 const RouteAddingForm = () => {
   const dispatch = useDispatch();
-  const location = useLocation();
-  const { routeTree } = useSelector((state) => state.routeTree);
-  const currentNode = routeTree.find(location.pathname);
+  const { currentNode } = useCurrentNode();
 
   const handleSubmit = useCallback((event) => {
     event.preventDefault();

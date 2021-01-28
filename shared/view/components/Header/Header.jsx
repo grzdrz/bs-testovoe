@@ -1,30 +1,27 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { useLocation } from 'react-router';
 
+import useCurrentNode from '../../../helpers/hooks/useCurrentNode';
 import Button from '../Button/Button.jsx';
 import './Header.scss';
 
 const Header = () => {
-  const location = useLocation();
-  const { routeTree } = useSelector((state) => state.routeTree);
-  const currentRouteNode = routeTree.find(location.pathname);
+  const { currentNode } = useCurrentNode();
 
-  const titleText = `Title: ${currentRouteNode && currentRouteNode.title}`;
+  const titleText = `Title: ${currentNode && currentNode.title}`;
 
   return (
     <header className="header">
       <p className="header__title">{titleText}</p>
-      {currentRouteNode && currentRouteNode.prevNode
+      {currentNode && currentNode.prevNode
         ? (
           <div className="header__back-link">
             <Button
-              to={currentRouteNode.prevNode.route}
-              text={`to ${currentRouteNode.prevNode.title}`}
+              to={currentNode.prevNode.route}
+              text={`to ${currentNode.prevNode.title}`}
               hasArrow
               arrowDirection="up"
             >
-              {`Parent node: ${currentRouteNode.prevNode.title}`}
+              {`Parent node: ${currentNode.prevNode.title}`}
             </Button>
           </div>
         ) : null}
