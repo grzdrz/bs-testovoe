@@ -2,7 +2,7 @@
 import { createTransform } from 'redux-persist';
 import RoutesNodesTree from '../shared/helpers/RoutesNodesTree';
 
-const SetTransform = createTransform(
+const setTransform = createTransform(
   (inboundState/* , key */) => { // срабатывает при обновлениях стейта
     const treeString = RoutesNodesTree.serialize(inboundState.routeTree);
     return treeString;
@@ -14,4 +14,4 @@ const SetTransform = createTransform(
   { whitelist: ['routeTree'] },
 );
 
-export default SetTransform;
+export default setTransform;

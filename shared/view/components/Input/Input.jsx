@@ -1,6 +1,9 @@
 import React from 'react';
+import block from 'bem-cn';
 
 import './Input.scss';
+
+const b = block('input');
 
 const Input = (props) => {
   const {
@@ -8,7 +11,7 @@ const Input = (props) => {
   } = props;
 
   return (
-    <input className="input" {...restProps} />
+    <input className={b()} {...restProps} />
   );
 };
 

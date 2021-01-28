@@ -1,11 +1,14 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
+import block from 'bem-cn';
 
 import { addNode } from '../../../../redux/RouteTree/actions';
 import useCurrentNode from '../../../helpers/hooks/useCurrentNode';
 import Input from '../Input/Input.jsx';
 import Button from '../Button/Button.jsx';
 import './RouteAddingForm.scss';
+
+const b = block('route-adding-form');
 
 const RouteAddingForm = () => {
   const dispatch = useDispatch();
@@ -22,10 +25,10 @@ const RouteAddingForm = () => {
   }, [currentNode]);
 
   return (
-    <form className="route-adding-form" onSubmit={handleSubmit}>
-      <p className="route-adding-form__title">Добавление узлов</p>
-      <div className="route-adding-form__route-input">
-        <p className="route-adding-form__input-label">Route</p>
+    <form className={b()} onSubmit={handleSubmit}>
+      <p className={b('title')}>Добавление узлов</p>
+      <div className={b('route-input')}>
+        <p className={b('input-label')}>Route</p>
         <Input
           type="text"
           name="route"
@@ -33,8 +36,8 @@ const RouteAddingForm = () => {
           required
         />
       </div>
-      <div className="route-adding-form__title-input">
-        <p className="route-adding-form__input-label">Title</p>
+      <div className={b('title-input')}>
+        <p className={b('input-label')}>Title</p>
         <Input
           type="text"
           name="route-title"
@@ -42,7 +45,7 @@ const RouteAddingForm = () => {
           required
         />
       </div>
-      <div className="route-adding-form__submitter">
+      <div className={b('submitter')}>
         <Button
           text="добавить роут"
           hasArrow

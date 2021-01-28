@@ -1,8 +1,11 @@
 import React from 'react';
+import block from 'bem-cn';
 
 import useCurrentNode from '../../../helpers/hooks/useCurrentNode';
 import Button from '../Button/Button.jsx';
 import './Header.scss';
+
+const b = block('header');
 
 const Header = () => {
   const { currentNode } = useCurrentNode();
@@ -10,11 +13,11 @@ const Header = () => {
   const titleText = `Title: ${currentNode && currentNode.title}`;
 
   return (
-    <header className="header">
-      <p className="header__title">{titleText}</p>
+    <header className={b()}>
+      <p className={b('title')}>{titleText}</p>
       {currentNode && currentNode.prevNode
         ? (
-          <div className="header__back-link">
+          <div className={b('back-link')}>
             <Button
               to={currentNode.prevNode.route}
               text={`to ${currentNode.prevNode.title}`}
