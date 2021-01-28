@@ -9,7 +9,8 @@ const b = block('error-page');
 const ErrorPage = () => {
   return (
     <main className={b()}>
-      Page not found
+      <p className={b('title')}>Page not found</p>
+      <img className={b('image')} src="../../shared/images/error.jpg" alt="oops, page not found" />
     </main>
   );
 };

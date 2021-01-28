@@ -1,0 +1,11 @@
+.children-links-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 0;
+  list-style: none;
+
+  &__link {
+    height: 40px;
+    margin: 0 10px 10px 0;
+  }
+}

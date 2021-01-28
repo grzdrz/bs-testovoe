@@ -1,4 +1,3 @@
-/* eslint-disable no-useless-escape */
 import RouteNode from './RouteNode';
 
 class RoutesNodesTree {
@@ -126,7 +125,6 @@ class RoutesNodesTree {
     return targetNode;
   }
 
-  // eslint-disable-next-line consistent-return
   _next(current, callback) {
     if (this.head === current) {
       callback(current);
