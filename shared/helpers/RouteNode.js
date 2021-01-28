@@ -1,9 +1,9 @@
 class RouteNode {
-  constructor(
+  constructor({
     routeSegment,
     title,
     prevNode,
-  ) {
+  }) {
     this.routeSegment = routeSegment;
     this.title = title;
 
@@ -11,6 +11,9 @@ class RouteNode {
     this.nodes = [];
   }
 
+  /**
+   * Собирает полный путь текущего узла из сегментов в цепочке узлов-предков.
+   */
   get route() {
     if (this.prevNode) return `${this.prevNode.route}/${this.routeSegment}`;
     return `/${this.routeSegment}`;

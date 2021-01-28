@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import RouteNode from './RouteNode';
 
 class RoutesNodesTree {
@@ -6,18 +7,36 @@ class RoutesNodesTree {
   }
 
   initialize(routeSegment, title) {
-    this.head = new RouteNode(routeSegment, title, null);
+    this.head = new RouteNode({ routeSegment, title, prevNode: null });
   }
 
+  /**
+   * Добавляет дочерний узел в указанный.
+   * @param currentNode ссылка на целевой узел, в детей которого производится добавление нового узла.
+   * @param routeSegment сегмент пути соответвующий добавляемому узлу
+   * @param title титульник добавляемого узла
+   */
   add({ currentNode, routeSegment, title }) {
     const hasSameRoute = currentNode.nodes.map((node) => node.routeSegment).includes(routeSegment);
     if (hasSameRoute) return; // TEMP не реагирует на повторяющиеся роуты, уточнить поведение
 
-    const newNode = new RouteNode(routeSegment, title, currentNode);
+    const newNode = new RouteNode({ routeSegment, title, prevNode: currentNode });
 
     currentNode.nodes.push(newNode);
   }
 
+  /**
+    * Удаляет указанный узел.
+    *
+    * При удалении узла его дети мерджатся с детьми родителя удаляемого элемента.
+    *
+    * Если среди детей удаляемого элемента и среди детей родителя удаляемого элемента есть ноды с потенциально одним роутом, то
+    * дети удаляемого с коллизией отбрасываются при мердже.
+    *
+    * Если среди детей удаляемого элемента есть нод с потенциально таким же роутом как у удаляемого, то удаляемый нод заменяется на
+    * этот дочерний нод.
+    * @param removedNode ссылка на удаляемый узел
+   */
   remove(removedNode) {
     if (removedNode === this.head) return; // TEMP уточнить поведение
     const parentNode = removedNode.prevNode;
@@ -37,21 +56,34 @@ class RoutesNodesTree {
     parentNode.nodes = parentChildrenNodesWithoutRemovedNode.concat(nodesToMerge);
   }
 
-  find(route) { // рекурсивный поиск нода с искомым путём
+  /**
+   * Рекурсивный поиск узла по его роуту.
+   * @param route полный путь искомого узла.
+   */
+  find(route) {
     const current = this.head;
     const targetNode = this._findNode(current, route);
     return targetNode;
   }
 
-  iterate(callback) { // рекурсивный перебор с вызовом калбека на каждом ноде
+  /**
+   * Перебирает узлы древа
+   * @param callback вызывается на каждом ноде.
+   */
+  iterate(callback) { // рекурсивный перебор с вызовом калбека на каждом ноде.
     this._next(this.head, callback);
   }
 
+  /**
+   * Превращает все древо в массив спец. объектов, а затем в json строку
+   * (нативный сериализатор не переваривает двунаправленные связные списки из-за циклических ссылок у звеньев).
+   * @param tree сериализуемое дерево.
+   */
   static serialize(tree) {
     const arrayOfNodes = [];
     tree.iterate((node) => {
       arrayOfNodes.push({
-        lvl: node.route.split('\/').length,
+        lvl: node.route.split('/').length,
         title: node.title,
         routeSegment: node.routeSegment,
         prevRoute: node.prevNode ? node.prevNode.route : null,
@@ -62,6 +94,10 @@ class RoutesNodesTree {
     return JSON.stringify(arrayOfNodes);
   }
 
+  /**
+   * Десериализует результат полученный с использованием метода serialize.
+   * @param treeString строка с сериализованным деревом.
+   */
   static deserialize(treeString) {
     const arrayOfNodes = JSON.parse(treeString);
     const sortedArray = arrayOfNodes.sort((a, b) => a.lvl - b.lvl);
