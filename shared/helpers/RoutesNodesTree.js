@@ -18,7 +18,7 @@ class RoutesNodesTree {
    */
   add({ currentNode, routeSegment, title }) {
     const hasSameRoute = currentNode.nodes.map((node) => node.routeSegment).includes(routeSegment);
-    if (hasSameRoute) return; // TEMP не реагирует на повторяющиеся роуты, уточнить поведение
+    if (hasSameRoute) return;
 
     const newNode = new RouteNode({ routeSegment, title, prevNode: currentNode });
 
@@ -38,7 +38,7 @@ class RoutesNodesTree {
     * @param removedNode ссылка на удаляемый узел
    */
   remove(removedNode) {
-    if (removedNode === this.head) return; // TEMP уточнить поведение
+    if (removedNode === this.head) return;
     const parentNode = removedNode.prevNode;
 
     // переводим ссылки дочерних нодов удаляемого нода на родителя удаляемого
@@ -62,6 +62,7 @@ class RoutesNodesTree {
    */
   find(route) {
     const current = this.head;
+    if (route === '/') return current;
     const targetNode = this._findNode(current, route);
     return targetNode;
   }

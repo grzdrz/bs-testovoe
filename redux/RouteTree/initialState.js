@@ -1,8 +1,7 @@
 /* eslint-disable prefer-destructuring */
 import RoutesNodesTree from '../../shared/helpers/RoutesNodesTree';
-import compilationOptions from '../../compilationOptions';
 
-const mainRoute = compilationOptions.forGithubPages ? 'bs-testovoe' : 'main';
+const mainRoute = 'main';
 const tree = new RoutesNodesTree(mainRoute, 'Main');
 let currentNode = tree.head;
 tree.add({ currentNode, routeSegment: 'r1', title: 'r1' });

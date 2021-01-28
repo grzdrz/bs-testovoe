@@ -1,5 +1,6 @@
 import React from 'react';
 import block from 'bem-cn';
+import { Redirect } from 'react-router-dom';
 
 import useCurrentNode from '../../shared/helpers/hooks/useCurrentNode';
 import getPaletteModifier from '../../shared/helpers/GetPaletteModifier';
@@ -13,6 +14,7 @@ const b = block('route-tree-navigation-page');
 const RouteTreeNavigationPage = () => {
   const { childrenCount, currentNode } = useCurrentNode();
 
+  if (!currentNode) return <Redirect to="/error" />;
   return (
     <main className="route-tree-navigation-page">
       <div className={`route-tree-navigation-page__list-of-nodes ${getPaletteModifier(childrenCount, b, 'list-of-nodes')}`}>

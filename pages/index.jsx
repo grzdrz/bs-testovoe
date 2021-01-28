@@ -13,10 +13,9 @@ import storage from 'redux-persist/lib/storage';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import SetTransform from '../redux/SetTransform';
-import compilationOptions from '../compilationOptions';
 import Header from '../shared/view/components/Header/Header.jsx';
-/* import Page2 from './page2/page2.jsx'; */
 import RouteTreeNavigationPage from './RouteTreeNavigationPage/RouteTreeNavigationPage.jsx';
+import ErrorPage from './ErrorPage/ErrorPage.jsx';
 import rootReducer from '../redux/root-reducer';
 import '../shared/styles/global.scss';
 import './index.scss';
@@ -31,10 +30,8 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const store = createStore(persistedReducer/* rootReducer */);
+const store = createStore(persistedReducer);
 const persistor = persistStore(store);
-
-const mainRoute = compilationOptions.forGithubPages ? '/bs-testovoe' : '/main';
 
 const wrapper = document.querySelector('#wrapper');
 ReactDOM.render(
@@ -43,11 +40,14 @@ ReactDOM.render(
       <Router>
         <Header />
         <Switch>
-          <Route path={mainRoute}>
+          <Route exact path="/error">
+            <ErrorPage />
+          </Route>
+          <Route path="/main">
             <RouteTreeNavigationPage />
           </Route>
           <Route path="/">
-            <Redirect to={mainRoute} />
+            <Redirect to="/main" />
           </Route>
         </Switch>
       </Router>

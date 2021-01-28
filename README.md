@@ -1,5 +1,4 @@
 # bs-testovoe
-<a href="https://grzdrz.github.io/bs-testovoe/"><p>Github Pages</p></a>
 
 # Используемые библиотеки
 
