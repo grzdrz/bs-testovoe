@@ -20,21 +20,21 @@ class RoutesNodesTree {
 
   remove(removedNode) {
     if (removedNode === this.head) return; // TEMP уточнить поведение
+    const parentNode = removedNode.prevNode;
 
-    // переводим ссылки дочерних нодов удаляемого нода на предыдущий нод относительно удаляемого
+    // переводим ссылки дочерних нодов удаляемого нода на родителя удаляемого
     removedNode.nodes.forEach((childNode) => {
       childNode.prevNode = removedNode.prevNode;
     });
 
-    // удаляем из списка дочерних нодов родительского нода удаляемый нод
-    // и тут же пришиваем к дочерним нодам родителя дочерние ноды удаляемого нода
-    const parentNode = removedNode.prevNode;
-    const changedParentNodes = parentNode.nodes
-      .filter((childNode) => childNode !== removedNode)
-      .concat(removedNode.nodes);
-    parentNode.nodes = changedParentNodes;
-
-    removedNode = null; //
+    // убираем удаляемый из списка детей его родителя
+    const parentChildrenNodesWithoutRemovedNode = parentNode.nodes.filter((childNode) => childNode !== removedNode);
+    // получаем список роутов из списка детей родителя удаляемого
+    const parentChildrenNodesRoutes = parentChildrenNodesWithoutRemovedNode.map((node) => node.route);
+    // из списка детей удаляемого убираем ноды, роуты которых уже есть в списке детей родителя удаляемого
+    const nodesToMerge = removedNode.nodes.filter((childeNode) => !parentChildrenNodesRoutes.includes(childeNode.route));
+    // мерджим дочерние ноды удаляемого с дочерними нодами родителя удаляемого
+    parentNode.nodes = parentChildrenNodesWithoutRemovedNode.concat(nodesToMerge);
   }
 
   find(route) { // рекурсивный поиск нода с искомым путём
