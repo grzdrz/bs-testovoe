@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import block from 'bem-cn';
 
 import useCurrentNode from '../../shared/helpers/hooks/useCurrentNode';
-import getPaletteModifier from '../../shared/helpers/GetPaletteModifier';
+import getPaletteModifier from '../../shared/helpers/getPaletteModifier';
 import RouteAddingForm from '../../shared/view/components/RouteAddingForm/RouteAddingForm.jsx';
 import ChildrenRoutsTable from '../../shared/view/components/ChildrenRoutsTable/ChildrenRoutsTable.jsx';
 import './RouteTreeNavigationPage.scss';

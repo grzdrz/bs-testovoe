@@ -2,7 +2,7 @@ import React from 'react';
 import block from 'bem-cn';
 
 import useCurrentNode from '../../../helpers/hooks/useCurrentNode';
-import getPaletteModifier from '../../../helpers/GetPaletteModifier';
+import getPaletteModifier from '../../../helpers/getPaletteModifier';
 import DeleteButton from '../DeleteButton/DeleteButton.jsx';
 import './ChildrenRoutsTable.scss';
 

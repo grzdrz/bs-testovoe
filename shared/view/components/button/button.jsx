@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import block from 'bem-cn';
 
 import useCurrentNode from '../../../helpers/hooks/useCurrentNode';
-import getPaletteModifier from '../../../helpers/GetPaletteModifier';
+import getPaletteModifier from '../../../helpers/getPaletteModifier';
 import Basis from './Basis.jsx';
 import './Button.scss';
 
