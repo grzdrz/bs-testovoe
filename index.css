@@ -19,6 +19,7 @@
     text-decoration: none;
     border-radius: inherit;
     outline: none;
+    white-space: nowrap;
     background: #607fd6;
     border: 2px solid #220d53; }
     .button__basis:hover, .button__basis:active, .button__basis:focus {
@@ -64,23 +65,51 @@
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 10px 10%;
+  padding: 10px 7%;
   box-shadow: 0px 0px 10px 0px rgba(31, 32, 65, 0.5);
   background: white;
   opacity: 0.999; }
+  @media screen and (max-width: 425px) {
+    .header {
+      flex-direction: column;
+      align-items: flex-start; } }
   .header__title {
     height: 50px;
     display: flex;
     align-items: center;
     font-size: 20px;
     font-weight: bold;
-    padding-right: 40px; }
+    padding-right: 40px;
+    white-space: nowrap;
+    color: rgba(31, 32, 65, 0.75); }
   .header__back-link {
     height: 50px;
     text-decoration: none;
     font-family: Montserrat, Arial, sans-serif;
     font-size: 20px;
     font-weight: bold; }
+
+.children-links-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 0;
+  list-style: none; }
+  .children-links-list__link {
+    height: 40px;
+    margin: 0 10px 10px 0; }
+
+.footer {
+  width: 100%;
+  padding: 20px 7%;
+  box-shadow: 0px 0px 10px 0px rgba(31, 32, 65, 0.5);
+  background: white;
+  flex: 0 0 auto; }
+  .footer__title {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: rgba(31, 32, 65, 0.75); }
+  .footer__navigation {
+    width: 100%; }
 
 .input {
   width: 100%;
@@ -93,7 +122,6 @@
   max-width: 350px;
   min-width: 300px;
   height: max-content;
-  /* border: 1px solid $dark-shade-75; */
   border-radius: 5px;
   padding: 20px 10px;
   box-shadow: 0px 5px 11px 0px rgba(31, 32, 65, 0.5); }
@@ -113,24 +141,13 @@
   .route-adding-form__submitter {
     height: 40px; }
 
-.children-nodes-links {
-  width: 100%; }
-  .children-nodes-links__title {
-    margin-bottom: 10px; }
-  .children-nodes-links__links {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 10px 0; }
-  .children-nodes-links__link {
-    height: 40px;
-    margin-right: 10px; }
-
 .delete-button {
   width: 100%;
   height: 40px; }
 
 .children-routs-table {
   width: 100%;
+  min-width: 700px;
   box-shadow: 0px 5px 11px 0px rgba(31, 32, 65, 0.5);
   padding: 20px 10px;
   border-radius: 5px; }
@@ -149,7 +166,12 @@
     justify-content: center;
     padding: 10px;
     margin-right: 5px;
+    overflow: auto;
+    white-space: nowrap;
+    font-weight: bold;
     border: 2px solid #173072; }
+    .children-routs-table__cell-text {
+      overflow: auto; }
     .children-routs-table__cell:nth-of-type(1) {
       width: 40%; }
     .children-routs-table__cell:nth-of-type(2) {
@@ -161,7 +183,8 @@
       margin-right: 0; }
     .children-routs-table__cell_position_head {
       font-weight: bold;
-      color: rgba(31, 32, 65, 0.75); }
+      color: rgba(31, 32, 65, 0.75);
+      white-space: normal; }
     .children-routs-table__cell_palette_whatsapp {
       border: 2px solid #2c971e; }
     .children-routs-table__cell_palette_gitlab {
@@ -171,23 +194,55 @@
   display: flex;
   flex-direction: column;
   padding: 30px 5%;
-  background: white; }
+  background: white;
+  flex: 1 0 auto; }
   .route-tree-navigation-page__list-of-nodes {
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid purple; }
+    color: rgba(31, 32, 65, 0.75);
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: auto;
+    border: 5px solid #607fd6; }
+    .route-tree-navigation-page__list-of-nodes_palette_whatsapp {
+      border: 5px solid #2c971e; }
+    .route-tree-navigation-page__list-of-nodes_palette_gitlab {
+      border: 5px solid #ffaa65; }
   .route-tree-navigation-page__central-content {
     display: flex;
+    justify-content: space-around;
     width: 100%;
     margin-bottom: 30px; }
+    @media screen and (max-width: 1300px) {
+      .route-tree-navigation-page__central-content {
+        flex-direction: column; } }
   .route-tree-navigation-page__children-routs-table {
-    width: 60%; }
+    width: 70%; }
+    @media screen and (max-width: 1300px) {
+      .route-tree-navigation-page__children-routs-table {
+        margin-bottom: 30px;
+        width: 100%; } }
+    @media screen and (max-width: 768px) {
+      .route-tree-navigation-page__children-routs-table {
+        overflow: auto; } }
   .route-tree-navigation-page__route-adding-form {
-    width: 40%;
     display: flex;
     justify-content: center; }
   .route-tree-navigation-page__children-nodes-links {
     width: 100%; }
+
+.error-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 40px; }
+  .error-page__title {
+    font-size: 50px;
+    font-weight: bold; }
+  .error-page__image {
+    width: 100%;
+    max-width: 400px; }
 
 @font-face {
   font-family: "Montserrat";
@@ -241,13 +296,13 @@ html {
 html,
 body {
   min-width: 100%;
-  /* height: 100%; */
+  height: 100%;
   display: flex;
   flex-direction: column; }
 
-#app {
+#wrapper {
   min-width: 100%;
-  height: 100%;
+  min-height: 100%;
   display: flex;
   flex-direction: column; }
 
