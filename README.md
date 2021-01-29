@@ -4,7 +4,9 @@
 
 * react
 * redux
+* redux-persist
 * react-router
+* bem-cn
 
 # Загрузка
 ```
@@ -25,4 +27,9 @@ $ npm run prod
 # Запуск
 ```
 $ npm run server
+```
+
+# Линтер
+```
+$ npm run lint
 ```
