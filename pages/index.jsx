@@ -22,7 +22,7 @@ require.context('../shared/', true, /\.(ttf|eot|woff|woff2|svg|png|jpg|json)$/);
 const wrapper = document.querySelector('#wrapper');
 ReactDOM.render(
   <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
+    <PersistGate loading={<div>loading...</div>} persistor={persistor}>
       <Router>
         <Switch>
           <Route path="/error">

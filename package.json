@@ -7,7 +7,8 @@
     "dev": "webpack --mode development",
     "prod": "webpack --mode production",
     "server": "webpack-dev-server --open --mode development",
-    "lint": "eslint . --ext .js,.jsx"
+    "lint": "eslint . --ext .js,.jsx",
+    "deploy": "gh-pages -d bandle"
   },
   "author": "",
   "license": "ISC",

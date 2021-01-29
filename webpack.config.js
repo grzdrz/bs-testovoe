@@ -45,12 +45,6 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /(node_modules)/,
         loader: 'babel-loader',
-        options: {
-          presets: ['@babel/preset-react'],
-          plugins: [
-            ['@babel/plugin-proposal-class-properties', { loose: true }],
-          ],
-        },
       },
       {
         test: /\.(ttf|eot|woff|woff2|svg|png|jpg)$/,
