@@ -10,6 +10,7 @@
   flex-direction: column;
   padding: 30px 5%;
   background: $white;
+  flex: 1 0 auto;
 
   &__list-of-nodes {
     padding: 10px;

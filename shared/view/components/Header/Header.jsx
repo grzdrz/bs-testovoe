@@ -1,5 +1,6 @@
 import React from 'react';
 import block from 'bem-cn';
+import { Redirect } from 'react-router-dom';
 
 import useCurrentNode from '../../../helpers/hooks/useCurrentNode';
 import Button from '../Button/Button.jsx';
@@ -12,6 +13,7 @@ const Header = () => {
 
   const titleText = `Title: ${currentNode && currentNode.title}`;
 
+  if (!currentNode) return <Redirect to="/error" />;
   return (
     <header className={b()}>
       <p className={b('title')}>{titleText}</p>

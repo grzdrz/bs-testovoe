@@ -1,6 +1,6 @@
 import React from 'react';
-import block from 'bem-cn';
 import { Redirect } from 'react-router-dom';
+import block from 'bem-cn';
 
 import useCurrentNode from '../../shared/helpers/hooks/useCurrentNode';
 import getPaletteModifier from '../../shared/helpers/GetPaletteModifier';

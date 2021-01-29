@@ -34,7 +34,7 @@ ReactDOM.render(
               <Route path="/main">
                 <RouteTreeNavigationPage />
               </Route>
-              <Route path="/">
+              <Route exact path="/">
                 <Redirect to="/main" />
               </Route>
             </Switch>
